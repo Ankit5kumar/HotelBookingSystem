@@ -11,10 +11,7 @@ const bookingSchema = new mongoose.Schema({
         require:true,
         ref:"User"
     },
-    noOfBeds:{
-        type:Number,
-        required:true,
-    },
+   
     totalCost:{
         type:String,
 

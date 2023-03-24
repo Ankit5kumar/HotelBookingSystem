@@ -51,46 +51,52 @@ const cancelbooking = async (req, res) => {
     }
 }
 
-// const updateBooking = async (req, res) => { 
+const updateBooking = async (req, res) => { 
 
-//     const savedBooking = await Booking.findById({_id:req.params.id})
-//     if (!savedBooking) {
-//         return res.status(400).send({msg: "Invalid booking ID"});
-//     }
-//     const { status } = req.body;
-//     if (!status) {
-//         return res.status(400).send({msg: "Status field is missing"});
-//     }
-    
-//     savedBooking.status = status;
-//     try {
-//         const updatedBooking = await savedBooking.save();
-//         res.status(201).send(updatedBooking);
-//     } catch (err) {
-//         res.status(500).send({msg: "Internal error", err});
-//     }
-
-
-
-// }
-const updateBooking = async (req, res) => {
-    const BookingId = req.params.id;
-    try {
-        const updatedbooking = await Booking.findOneAndUpdate({
-            bookingid: BookingId
-        },{
-            status:req.body.status
-        }).exec();
-        console.log(updatedbooking)
-        res.status(200).send("updated");
-
-        
-
-    } catch (error) {
-        console.log(error)
-        res.status(500).send({msg:'some internal error occured'})
+    const savedBooking = await Booking.findById({_id:req.params.id})
+    if (!savedBooking) {
+        return res.status(400).send({msg: "Invalid booking ID"});
     }
+    const { status } = req.body;
+    if (!status) {
+        return res.status(400).send({msg: "Status field is missing"});
+    }
+    
+    savedBooking.status = status;
+    try {
+        const updatedBooking = await savedBooking.save();
+        res.status(201).send(updatedBooking);
+    } catch (err) {
+        res.status(500).send({msg: "Internal error", err});
+    }
+
+
+
 }
+// const updateBooking = async (req, res) => {
+//     const BookingId = req.params.id;
+//     const status = req.body.status;
+//     console.log(status);
+//     console.log(BookingId);
+//     try {
+//         const savedbooking = await Booking.findById({BookingId})
+//         if(!savedbooking){
+//             return res.send("invliad id")
+//         }
+//         if(status === savedbooking.status.cancel){
+//             savedbooking.status = status;
+
+//         }
+//         if(status === savedbooking.status.accept){
+//             savedbooking.status = status;
+//         }
+        
+//       return res.send({msg: "Booking updated",Booking})
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).send({msg:'some internal error occured'})
+//     }
+// }
 
 module.exports = {
     createBooking,
