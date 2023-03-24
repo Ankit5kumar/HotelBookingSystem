@@ -3,7 +3,6 @@ const Room = require('../model/Rood.model');
 const RoomCreation  = async (req, res, next) => {
     const RoomObj = {
         roomNumber:req.body.roomNumber,
-        roomType:req.body.roomType,
         pricePerNight:req.body.pricePerNight,
         availability:req.body.availability
 

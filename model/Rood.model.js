@@ -6,12 +6,6 @@ const roomSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  roomType: {
-    type: String,
-    enum: [1,2],
-    required: true
-  },
-//   description: String,
   pricePerNight: {
     type: Number,
     required: true,
